@@ -20,10 +20,10 @@ resources:
   # a sane defaults ones. If you have more questions or concerns, please refer
   # to #falco slack channel for more info about it
   requests:
-    cpu: 100m
+    cpu: 500m
     memory: 512Mi
   limits:
-    cpu: 200m
+    cpu: 1000m
     memory: 1024Mi
 
 extraArgs: []
@@ -338,6 +338,18 @@ integrations:
 tolerations:
   - effect: NoSchedule
     key: node-role.kubernetes.io/master
+  - effect: NoSchedule
+    key: node-role.openstack.org/compute
+    value: member
+  - effect: NoSchedule
+    key: node-role.openstack.org/l3_node
+    value: member
+  - effect: NoSchedule
+    key: node-role.openstack.org/lb_node
+    value: member
+  - effect: NoSchedule
+    key: node-role.openstack.org/monitoring_node
+    value: member
 
 scc:
   # true here enabled creation of Security Context Constraints in Openshift

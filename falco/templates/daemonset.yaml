@@ -48,7 +48,7 @@ spec:
 {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          image: {{ template "falco.image" . }}
+          image: falcosecurity/falco:0.25.0
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
